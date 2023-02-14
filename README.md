@@ -1,7 +1,7 @@
 # booking-service
 booking-service
 
-Booking service implementation with Sprin WebFLUX and R2DBC using PostgreSQL.
+Booking service implementation with Spring WebFLUX and R2DBC using PostgreSQL.
 
 To spin up PostgreSQL you can run  docker-compose up -d --build
 
