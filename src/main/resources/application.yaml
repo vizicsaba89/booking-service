@@ -1,0 +1,13 @@
+server:
+  port: 8081
+configuration:
+  datasource:
+    host: localhost
+    port: 5432
+    database: postgres
+    username: postgres
+    password: admin
+  validator:
+    dateTimeIntervalInMinutes: 180
+    workingHoursStart: 9
+    workingHoursEnd: 17

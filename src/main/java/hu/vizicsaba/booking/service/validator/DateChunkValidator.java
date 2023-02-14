@@ -7,14 +7,16 @@ import org.springframework.stereotype.Service;
 import java.time.temporal.ChronoUnit;
 
 @Service
-public class DateTimeIntervalValidator implements BaseValidator {
+public class DateChunkValidator implements BaseValidator {
 
     @Override
     public ValidationResult validate(ValidationRequest validationRequest) {
-        long diffInHours = validationRequest.getFrom().until(validationRequest.getTo(), ChronoUnit.HOURS);
+        if (validationRequest.getFrom().getSecond() != 0 || validationRequest.getFrom().getMinute() != 0 && validationRequest.getFrom().getMinute() != 30) {
+            return new ValidationResult(false, ValidatorMessage.INVALID_DATE_CHUNK_MESSAGE);
+        }
 
-        if (diffInHours > 3) {
-            return new ValidationResult(false, "Cannot be more than 3 hours");
+        if (validationRequest.getTo().getSecond() != 0 || validationRequest.getTo().getMinute() != 0 && validationRequest.getTo().getMinute() != 30) {
+            return new ValidationResult(false, ValidatorMessage.INVALID_DATE_CHUNK_MESSAGE);
         }
 
         return new ValidationResult(true, null);
